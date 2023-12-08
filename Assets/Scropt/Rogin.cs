@@ -19,13 +19,18 @@ public class Rogin : MonoBehaviour
     public InputField IDRogin2;
 
     //일단 임시 로그인 정보 
-    private string userID = "Name";
-    private string password = "1234";
+    public static string userID;
+    public static string password;
 
 
     public void LoginButtonClick() //로그인 버튼 
     {
-        if(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password))//(IDRogin.text == userID && paswedRogin.text == password)
+        string IDinput = IDRogin.text;
+        string PSinput = paswedRogin.text;
+
+        Debug.Log(userID); //되면 지우기 
+
+        if(PlayerPrefs.GetString(userID) == IDRogin.text && PlayerPrefs.GetString(password) == password)// (IDRogin.text == userID && paswedRogin.text == password) //(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password)) //(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password)) //(IDRogin.text == userID && paswedRogin.text == password)//(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password))
         {
             Debug.Log("로그인 성공");
             //로그인 성공시 로그인 창 닫음
@@ -39,29 +44,38 @@ public class Rogin : MonoBehaviour
 
     public void RegisterBtnClick() //회원가입 버튼 
     {
-
         LoginView.SetActive(false);
         RegisterView.SetActive(true);
+    }
 
-      
+    public string GetUserID()
+    {
+        return userID;
     }
 
     public void GoBtnClick()
     {
         //입력된 아이디 비밀번호 
-            string userID = IDRogin2.text; 
-            string password = paswedRogin2.text;
+        string IDinput2 = IDRogin2.text; 
+        string PSinput2 = paswedRogin2.text;
 
-        if (IDRogin2.text == userID && paswedRogin2.text == password)
+        Debug.Log(userID);
+
+        if (IDRogin2.text != userID)
         {
+            userID = IDinput2;
+            password = PSinput2;
+
             // PlayerPrefs를 사용하여 사용자 데이터를 저장합니다 
             PlayerPrefs.SetString(userID, password);
             PlayerPrefs.Save();
 
             Debug.Log("사용자 등록 완료: " + userID);
 
+
+
         }
-        if (PlayerPrefs.HasKey(userID))
+        else if (PlayerPrefs.HasKey(userID))
         {
             Debug.LogWarning("이미 사용자가 존재합니다.");
         }
