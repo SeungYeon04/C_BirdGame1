@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement; //씬
 using UnityEngine.UI;
 
 public class Rogin : MonoBehaviour
@@ -33,8 +34,7 @@ public class Rogin : MonoBehaviour
         if(PlayerPrefs.GetString(userID) == IDRogin.text && PlayerPrefs.GetString(password) == password)// (IDRogin.text == userID && paswedRogin.text == password) //(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password)) //(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password)) //(IDRogin.text == userID && paswedRogin.text == password)//(PlayerPrefs.HasKey(userID) || PlayerPrefs.HasKey(password))
         {
             Debug.Log("로그인 성공");
-            //로그인 성공시 로그인 창 닫음
-            LoginView.SetActive(false);
+            SceneManager.LoadScene("RPGMain");
         }
         else
         {
