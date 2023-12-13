@@ -13,7 +13,6 @@
 ![스크린샷 2023-12-13 113347](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/e52bc29e-0637-4d58-9b43-dd1d50a34c37)  
   
 ATM 입금 출금 스크립트  
-![스크린샷 2023-12-13 113440](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/6c2fdb5f-1693-4921-bdb3-aaef6565a06d)
 ![스크린샷 2023-12-13 113437](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/88aa6c8e-ea7f-4ea8-b357-9943b927685d)
-
+![스크린샷 2023-12-13 113440](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/6c2fdb5f-1693-4921-bdb3-aaef6565a06d)
   
