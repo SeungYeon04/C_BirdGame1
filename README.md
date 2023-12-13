@@ -1,8 +1,8 @@
 # SfartaGameATM1
   
 고양이게임 로그인 & 스탯 & 메뉴 
-![제목 없는 동영상 - Clipchamp로 제작](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/8e7185d7-23d6-480f-88f5-10b14b1aee10)
-![제목 없는 동영상 - Clipchamp로 제작 (1)](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/4785ebde-29ec-4ba5-b783-0728c2866a08)
+![제목 없는 동영상 - Clipchamp로 제작](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/8e7185d7-23d6-480f-88f5-10b14b1aee10)  
+![제목 없는 동영상 - Clipchamp로 제작 (1)](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/4785ebde-29ec-4ba5-b783-0728c2866a08)  
   
 어려웠던 점 / 다른 스크립트에서 가져온 머니 변수  
 다른 씬에서 100 가져온 후 변동 일어나도  
