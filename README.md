@@ -1,4 +1,6 @@
-# SfartaGameATM1(스파르타 개인과제)  
+# SfartaGameATM1 
+  
+#### (스파르타 개인과제)  
   
 #### 고양이게임 로그인 & 스탯 & 메뉴  
 ![제목 없는 동영상 - Clipchamp로 제작](https://github.com/SeungYeon04/SeungYeon04-SfartaGameATM1/assets/100332811/8e7185d7-23d6-480f-88f5-10b14b1aee10)  
