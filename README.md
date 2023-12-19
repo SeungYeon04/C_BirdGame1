@@ -1,4 +1,4 @@
-# SfartaGameATM1 
+# SpartaGameATM1 
   
 #### (스파르타 개인과제)  
   
