@@ -13,7 +13,7 @@
 
 ## ⚙️ 개발환경  
 
-• 엔진: 유니티 2022.3.12f1
+• 엔진: 유니티 (2022.3.12f1)  
 • 언어: C#  
 • IDE: Visual Studio  
 • VCS: Github desktop  
