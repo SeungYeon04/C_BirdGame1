@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     #if UNITY_EDITOR
     private void OnValidate()
     {
-        slots = slotParent.GetComponentsInChildren<Slot>(); 
+        slots = slotParent.GetComponentsInChildren<Slot>();
     }
 
 #endif
@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
         int i = 0; 
         for(; i < items.Count && i < slots.Length; i++)
         {
-            slots[i].item = items[i];   
+            slots[i].item = items[i];
         }
         for(; i < slots.Length; i++)
         {
@@ -43,7 +43,8 @@ public class Inventory : MonoBehaviour
         if(items.Count < slots.Length)
         {
             items.Add(_item);
-            FreshSlot(); 
+            FreshSlot();
+            Debug.Log("¿ÖÀÌ·³");
         }
         else
         {
