@@ -9,6 +9,9 @@ public class TouchPadInput : MonoBehaviour
     // 이동 중인지 여부
     private bool isMoving = false;
 
+    // 플레이어의 인벤토리
+    public Inventory inventory;
+
     void Update()
     {
         // 터치 입력 또는 마우스 입력 감지
@@ -52,14 +55,27 @@ public class TouchPadInput : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.CompareTag("Item")) //터치 후 또 다른 조건 캐릭터가 달려가서 충돌해서 애니메이션 실행 후 습득
+        if (hit.collider != null && hit.collider.CompareTag("Item"))
         {
             // 아이템을 획득하거나 아이템을 터치한 위치로 이동하는 등의 작업을 수행
             Debug.Log("아이템을 획득했습니다!");
 
             // 아이템을 획득한 후에는 아이템을 삭제하거나 비활성화할 수 있습니다.
             Destroy(hit.collider.gameObject);
-        }
 
+            IObjectItem clickInterface = hit.transform.gameObject.GetComponent<IObjectItem>();
+
+            if (clickInterface != null)
+            {
+                // 클릭한 객체에서 아이템 정보를 가져옴
+                Item item = clickInterface.ClickItem();
+                // 아이템 이름 출력
+                print($"{item.itemName}");
+                // 인벤토리에 아이템 추가
+                inventory.AddItem(item);
+                Debug.Log(item);
+           
+            }
+        }
     }
 }

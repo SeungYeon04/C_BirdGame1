@@ -5,19 +5,19 @@ using UnityEngine;
 public class ObjectItem : MonoBehaviour, IObjectItem
 {
     [Header("아이템")] 
-    public Item Item;
+    public Item item;
 
     [Header("아이템 이미지")] 
     public SpriteRenderer itemImage; 
 
     void Start()
     {
-        itemImage.sprite = Item.itemImage; 
+        itemImage.sprite = item.itemImage; 
     }
 
     public Item ClickItem()
     {
-        return this.Item; 
+        return this.item; 
     }
 
 }

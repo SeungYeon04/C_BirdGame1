@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - Item: {instanceID: 0}
+  - item: {instanceID: 0}
   - itemImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
