@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 public class ATM : MonoBehaviour
-{
+{/*
     //숫자 표시!!만 하는 아래 텍스트들 종류 
     public Text PlayerMoney; 
     public Text ATMMoney;
@@ -98,6 +98,6 @@ public class ATM : MonoBehaviour
             }
         }       
 
-
-    }
+        
+    }*/
 }
