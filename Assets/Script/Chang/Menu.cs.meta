@@ -3,7 +3,10 @@ guid: 6b9b6d15d208e364eb2e9529081cc1ba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - MenuScrin: {instanceID: 0}
+  - MyStatsScrin: {fileID: 6547588379803341894, guid: 00dfcaeda8aac2640be8c1c6f503b0a0, type: 3}
+  - InventoryScrin: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
