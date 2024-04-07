@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Item;
 
 [System.Serializable]
 public class ItemSlot
@@ -37,7 +38,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Slot[] slots;
 
-     #if UNITY_EDITOR
+#if UNITY_EDITOR
     // 에디터 상에서만 호출되는 함수
     private void OnValidate()
     {
@@ -49,7 +50,7 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         // 인벤토리 초기화 함수 호출
-        FreshSlot();
+        FreshSlot(); 
     }
 
     // 아이템을 추가하는 함수
@@ -79,22 +80,95 @@ public class Inventory : MonoBehaviour
 
         FreshSlot();
     }
-
     public void FreshSlot()
     {
+        // 모든 슬롯을 순회하면서, 각 슬롯에 대응하는 아이템 슬롯 정보를 업데이트합니다.
+        // itemSlots 리스트의 크기를 넘어서는 슬롯은 아이템을 비웁니다.
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < itemSlots.Count)
             {
-                slots[i].item = itemSlots[i].item; // 아이템 할당
-                slots[i].quantity = itemSlots[i].quantity; // 수량 할당
+                var slot = itemSlots[i];
+                slots[i].UpdateSlot(slot.item, slot.quantity);
             }
             else
             {
-                slots[i].item = null; // 아이템 비우기
-                slots[i].quantity = 0; // 수량 리셋
+                slots[i].ClearSlot(); // 아이템 비우는 로직을 별도의 메서드로 분리
             }
         }
     }
 
+
+    //Inventory 스크립트 내에 모드를 나타내는 열거형과 변수를 추가합니다.
+    //이 변수는 인벤토리가 현재 아이템 사용 모드인지, 판매 모드인지를 나타냅니다 
+
+    public enum InventoryMode
+    {
+        UseItem,
+        SellItem
+    }
+
+    public InventoryMode currentMode = InventoryMode.UseItem;
+
+
+
+    //판매 버튼을 눌렀을 때 currentMode를 SellItem으로 전환하고, 인벤토리를 닫았다가 다시 열 때는 기본적으로 UseItem 모드로 돌아가도록 합니다.
+    //이를 위해 판매 버튼에 연결할 메소드를 Inventory 스크립트에 추가합니다
+
+    // 판매 모드로 전환
+    public void EnableSaleMode()
+    {
+        currentMode = InventoryMode.SellItem;
+    }
+
+    // 아이템 사용 모드로 전환 (기본 모드)
+    public void EnableUseItemMode()
+    {
+        currentMode = InventoryMode.UseItem;
+    }
+
+    public void SellItem(Item item, int quantity)
+    {
+        if (item == null)
+        {
+            Debug.LogError("판매하려는 아이템이 null입니다.");
+            return;
+        }
+        if (PlayerStack.Instance == null)
+        {
+            Debug.LogError("PlayerStack.Instance가 null입니다.");
+            return;
+        }
+
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            if (itemSlots[i].item == item && itemSlots[i].quantity >= quantity)
+            {
+                itemSlots[i].quantity -= quantity; // 아이템 수량 감소
+                PlayerStack.Instance.AddMoney(item.value * quantity); // 판매 금액을 플레이어의 돈에 추가
+                Debug.Log($"{item.itemName}을(를) {quantity}개 판매하여 {item.value * quantity}원을 벌었습니다.");
+
+                if (itemSlots[i].quantity <= 0)
+                {
+                    itemSlots.RemoveAt(i); // 수량이 0이면 슬롯에서 아이템 제거
+                }
+                FreshSlot(); // 인벤토리 UI 갱신 
+                break;
+            }
+        }
+    }
+
+    public ItemType sellableItemType = ItemType.Fish; // 기본적으로 생선만 판매 가능
+
+    // 판매 모드 활성화 메소드를 아이템 타입을 인자로 받도록 확장
+    public void EnableSaleMode(ItemType itemType)
+    {
+        currentMode = InventoryMode.SellItem;
+        sellableItemType = itemType; // 판매 가능한 아이템 타입 설정
+    }
+
+
 }
+
+
+
