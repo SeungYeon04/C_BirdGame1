@@ -69,6 +69,7 @@ public class Slot : MonoBehaviour
 
     public void OnClick()
     {
+        // Inventory와 PlayerStack 참조가 없는 경우 에러 로깅
         if (inventory == null)
         {
             Debug.LogError("Inventory 참조가 없습니다.");
@@ -80,18 +81,24 @@ public class Slot : MonoBehaviour
             return;
         }
 
-        if (inventory.currentMode == Inventory.InventoryMode.SellItem && itemSlot.item.itemType == inventory.sellableItemType)
+       
+        if (inventory.currentMode == Inventory.InventoryMode.UseItem)
         {
-            // 아이템 판매 로직
-            inventory.SellItem(itemSlot.item, 1);
-            Debug.Log("판매로직");
+            // 아이템 사용 로직 (여기서 구체적인 사용 로직을 추가하거나 수정)
+            Debug.Log(itemSlot.item.itemName + " 사용됨");
         }
-        else if (inventory.currentMode == Inventory.InventoryMode.UseItem)
+        else if(inventory.currentMode == Inventory.InventoryMode.SellItem && itemSlot.item.itemType == inventory.sellableItemType && inventory.currentMode != Inventory.InventoryMode.UseItem) // 판매 모드인지 확인
         {
-            // 아이템 사용 로직
-            // 예: Debug.Log(itemSlot.item.itemName + " 사용됨"); 
+            // 판매 로직 실행
+            inventory.SellItem(itemSlot.item, 1);
+            Debug.Log("판매로직 실행됨");
+        }
+        else
+        {
+            Debug.Log("현재는 판매할 수 없는 모드입니다.");
         }
     }
+
 
     public void UpdateSlot(Item item, int quantity)
     {

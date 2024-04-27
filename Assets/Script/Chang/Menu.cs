@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Inventory;
+using static Item;
 
 public class Menu : MonoBehaviour
 {
+    public Inventory inventory; 
+    public Slot slot; 
 
     public GameObject MenuScrin;
     public GameObject MyStatsScrin;
@@ -26,6 +30,7 @@ public class Menu : MonoBehaviour
     public void BackStats()
     {
         MyStatsScrin.SetActive(false);
+        InventoryScrin.SetActive(false);
     }
 
     //메뉴 내 버튼들 
@@ -43,11 +48,20 @@ public class Menu : MonoBehaviour
 
     public void InventoryOpen()
     {
-        InventoryScrin.SetActive(true); 
+        InventoryScrin.SetActive(true);
+
+        //inventory.EnableUseItemMode();
+        inventory.currentMode = Inventory.InventoryMode.UseItem;
+        Debug.Log("현재 기본 모드: " + inventory.currentMode.ToString());
+
     }
 
     public void InventoryBack()
     {
         InventoryScrin.SetActive(false);
+
+        //inventory.EnableUseItemMode(); 
+        inventory.currentMode = Inventory.InventoryMode.UseItem;
+        Debug.Log("현재 기본 모드: " + inventory.currentMode.ToString());
     }
 }

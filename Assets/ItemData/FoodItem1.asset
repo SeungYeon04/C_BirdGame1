@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Apple
   itemType: 5
-  itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemImage: {fileID: 21300000, guid: c0f688a637c7ac6499ab4131e857234a, type: 3}
   itemPrefab: {fileID: 1804838094674841560, guid: 8e3940b5ffee88b42881f68b0bccaea7, type: 3}
   value: 20
   weaponType: 

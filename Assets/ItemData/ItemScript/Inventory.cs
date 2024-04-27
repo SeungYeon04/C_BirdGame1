@@ -125,7 +125,7 @@ public class Inventory : MonoBehaviour
     public void EnableUseItemMode()
     {
         currentMode = InventoryMode.UseItem;
-    }
+    } 
 
     public void SellItem(Item item, int quantity)
     {
