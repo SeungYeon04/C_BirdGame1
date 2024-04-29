@@ -9,6 +9,8 @@ public class TouchPadInput : MonoBehaviour
     // 이동 중인지 여부
     private bool isMoving = false;
 
+    public Animator MoveAni; 
+
     // 플레이어의 인벤토리
     public Inventory inventory;
 
@@ -23,6 +25,7 @@ public class TouchPadInput : MonoBehaviour
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 targetPosition.z = transform.position.z; // 플레이어의 Z축 위치 유지 
                 CheckAndHandleItem(targetPosition);
+                MoveAni.SetBool("MoveAni", true); 
             }
             // 마우스 입력이 있는 경우
             else if (Input.GetMouseButtonDown(0))
@@ -30,6 +33,7 @@ public class TouchPadInput : MonoBehaviour
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 targetPosition.z = transform.position.z; // 플레이어의 Z축 위치 유지
                 CheckAndHandleItem(targetPosition);
+                MoveAni.SetBool("MoveAni", true);
             }
 
             // 이동 시작
@@ -46,6 +50,7 @@ public class TouchPadInput : MonoBehaviour
             {
                 //Debug.Log("도착!");
                 isMoving = false;
+                MoveAni.SetBool("MoveAni", false);
             }
         }
     }
