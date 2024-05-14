@@ -53,6 +53,18 @@ public class TouchPadInput : MonoBehaviour
                 MoveAni.SetBool("MoveAni", false);
             }
         }
+
+        Vector3 direction = targetPosition - transform.position;
+        if (direction.x < 0)
+        {
+            // 오른쪽을 보도록 회전
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            // 왼쪽을 보도록 회전
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
     }
 
     // 아이템을 터치한 위치에서 검출하여 처리
