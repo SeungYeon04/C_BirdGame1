@@ -84,6 +84,9 @@ public class Slot : MonoBehaviour
             return;
         }
 
+
+
+       
         if (inventory.currentMode == Inventory.InventoryMode.UseItem)
         {
             // 아이템 사용 로직 (여기서 구체적인 사용 로직을 추가하거나 수정)
