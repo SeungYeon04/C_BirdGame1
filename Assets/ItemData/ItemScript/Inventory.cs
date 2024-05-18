@@ -125,7 +125,7 @@ public class Inventory : MonoBehaviour
     public void EnableUseItemMode()
     {
         currentMode = InventoryMode.UseItem;
-    } 
+    }
 
     public void SellItem(Item item, int quantity)
     {
@@ -140,18 +140,21 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        // 아이템 슬롯 관리를 위한 해시 테이블
-        var itemSlotDictionary = new Dictionary<Item, ItemSlot>();
-        foreach (var itemSlot in itemSlots)
+        for (int i = 0; i < itemSlots.Count; i++)
         {
-            itemSlotDictionary[itemSlot.item] = itemSlot;
-        }
+            if (itemSlots[i].item == item && itemSlots[i].quantity >= quantity)
+            {
+                itemSlots[i].quantity -= quantity;
+                PlayerStack.Instance.AddMoney(item.value * quantity);
+                Debug.Log($"{item.itemName} {quantity} 뭐시기 {item.value * quantity}");
 
-        // 판매하려는 아이템 슬롯 가져오기
-        if (!itemSlotDictionary.TryGetValue(item, out var targetSlot))
-        {
-            Debug.LogError("판매하려는 아이템을 찾을 수 없습니다.");
-            return;
+                if (itemSlots[i].quantity <= 0)
+                {
+                    itemSlots.RemoveAt(i);
+                }
+                FreshSlot(); 
+                break;
+            }
         }
     }
 
