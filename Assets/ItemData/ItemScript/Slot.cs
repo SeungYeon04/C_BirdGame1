@@ -69,6 +69,8 @@ public class Slot : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log("클릭"); 
+
 
         // Inventory와 PlayerStack 참조가 없는 경우 에러 로깅
         if (inventory == null)

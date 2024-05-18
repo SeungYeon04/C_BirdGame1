@@ -140,21 +140,18 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < itemSlots.Count; i++)
+        // 아이템 슬롯 관리를 위한 해시 테이블
+        var itemSlotDictionary = new Dictionary<Item, ItemSlot>();
+        foreach (var itemSlot in itemSlots)
         {
-            if (itemSlots[i].item == item && itemSlots[i].quantity >= quantity)
-            {
-                itemSlots[i].quantity -= quantity; // 아이템 수량 감소
-                PlayerStack.Instance.AddMoney(item.value * quantity); // 판매 금액을 플레이어의 돈에 추가
-                Debug.Log($"{item.itemName}을(를) {quantity}개 판매하여 {item.value * quantity}원을 벌었습니다.");
+            itemSlotDictionary[itemSlot.item] = itemSlot;
+        }
 
-                if (itemSlots[i].quantity <= 0)
-                {
-                    itemSlots.RemoveAt(i); // 수량이 0이면 슬롯에서 아이템 제거
-                }
-                FreshSlot(); // 인벤토리 UI 갱신 
-                break;
-            }
+        // 판매하려는 아이템 슬롯 가져오기
+        if (!itemSlotDictionary.TryGetValue(item, out var targetSlot))
+        {
+            Debug.LogError("판매하려는 아이템을 찾을 수 없습니다.");
+            return;
         }
     }
 
