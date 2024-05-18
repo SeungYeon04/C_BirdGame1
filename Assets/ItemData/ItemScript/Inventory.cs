@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
         {
             // 슬롯이 이미 있으면, 수량을 증가
             slot.AddQuantity(1);
-        }
+        } 
         else
         {
             // 새 슬롯을 추가
@@ -166,8 +166,6 @@ public class Inventory : MonoBehaviour
         currentMode = InventoryMode.SellItem;
         sellableItemType = itemType; // 판매 가능한 아이템 타입 설정
     }
-
-
 }
 
 

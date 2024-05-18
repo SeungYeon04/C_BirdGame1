@@ -69,8 +69,6 @@ public class Slot : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("클릭"); 
-
 
         // Inventory와 PlayerStack 참조가 없는 경우 에러 로깅
         if (inventory == null)
@@ -84,9 +82,6 @@ public class Slot : MonoBehaviour
             return;
         }
 
-
-
-       
         if (inventory.currentMode == Inventory.InventoryMode.UseItem)
         {
             // 아이템 사용 로직 (여기서 구체적인 사용 로직을 추가하거나 수정)
