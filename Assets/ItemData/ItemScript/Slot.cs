@@ -84,7 +84,7 @@ public class Slot : MonoBehaviour
         if (inventory.currentMode == Inventory.InventoryMode.UseItem)
         {
             // 아이템 사용 로직 (여기서 구체적인 사용 로직을 추가하거나 수정)
-            Debug.Log(item + " 사용됨");
+            Debug.Log(item + " 사용됨"); //ItemSlot.ItemName. 다 없애니 되네 
         }
         else if(inventory.currentMode == Inventory.InventoryMode.SellItem && itemSlot.item.itemType == inventory.sellableItemType && inventory.currentMode != Inventory.InventoryMode.UseItem) // 판매 모드인지 확인
         {
