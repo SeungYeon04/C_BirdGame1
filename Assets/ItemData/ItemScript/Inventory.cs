@@ -9,6 +9,7 @@ public class ItemSlot
     public Item item;
     public int quantity;
 
+
     public ItemSlot(Item newItem, int newQuantity)
     {
         item = newItem;
@@ -110,8 +111,6 @@ public class Inventory : MonoBehaviour
 
     public InventoryMode currentMode = InventoryMode.UseItem;
 
-
-
     //판매 버튼을 눌렀을 때 currentMode를 SellItem으로 전환하고, 인벤토리를 닫았다가 다시 열 때는 기본적으로 UseItem 모드로 돌아가도록 합니다.
     //이를 위해 판매 버튼에 연결할 메소드를 Inventory 스크립트에 추가합니다
 
@@ -146,7 +145,7 @@ public class Inventory : MonoBehaviour
             {
                 itemSlots[i].quantity -= quantity;
                 PlayerStack.Instance.AddMoney(item.value * quantity);
-                Debug.Log($"{item.itemName} {quantity} 뭐시기 {item.value * quantity}");
+                Debug.Log($"{item.itemName} {quantity} 아이템 {item.value * quantity} 판매완료");
 
                 if (itemSlots[i].quantity <= 0)
                 {
