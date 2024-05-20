@@ -41,7 +41,7 @@ public class Slot : MonoBehaviour
     }
 
     // 슬롯의 UI를 업데이트하는 메소드
-    private void UpdateSlotUI()
+    public void UpdateSlotUI()
     {
         if (_item != null)
         {
@@ -86,7 +86,7 @@ public class Slot : MonoBehaviour
             // 아이템 사용 로직 (여기서 구체적인 사용 로직을 추가하거나 수정)
             Debug.Log(item + " 사용됨"); //ItemSlot.ItemName. 다 없애니 되네 
         }
-        else if(inventory.currentMode == Inventory.InventoryMode.SellItem && itemSlot.item.itemType == inventory.sellableItemType && inventory.currentMode != Inventory.InventoryMode.UseItem) // 판매 모드인지 확인
+        else if(inventory.currentMode == Inventory.InventoryMode.SellItem) // 판매 모드인지 확인 && itemSlot.item.itemType == inventory.sellableItemType && inventory.currentMode != Inventory.InventoryMode.UseItem
         {
             // 판매 로직 실행
             inventory.SellItem(item, 1);
