@@ -157,6 +157,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void UseItem(Item item, int quantity)
+    {
+
+    }
+
     public ItemType sellableItemType = ItemType.Fish; // 기본적으로 생선만 판매 가능
 
     // 판매 모드 활성화 메소드를 아이템 타입을 인자로 받도록 확장

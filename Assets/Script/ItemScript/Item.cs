@@ -10,7 +10,7 @@ public class Item : ScriptableObject
         Equipment,
         Used,
         Ingredient,
-        ETC,
+        bait,//미끼 
         Fruit, // 과일
         Fish,  // 생선
     }

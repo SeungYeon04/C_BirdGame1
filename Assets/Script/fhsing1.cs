@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Item;
 using static UnityEditor.Progress;
 
 public class FishingRod : MonoBehaviour
@@ -44,8 +45,13 @@ public class FishingRod : MonoBehaviour
 
         Debug.Log("랜덤수:" + randomNumber);
 
-        // 일정 시간 대기
-        yield return new WaitForSeconds(fishingTime);
+        //if(미끼에따른딜레이정하자)
+        //{
+             
+            // 일정 시간 대기
+            yield return new WaitForSeconds(fishingTime);
+        //}
+        
 
         if (randomNumber <= 30)  
         {
