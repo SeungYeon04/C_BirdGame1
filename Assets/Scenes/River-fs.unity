@@ -218,6 +218,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &820505937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4625583196740345084, guid: f330892d359bb794da9f8ab39b830699, type: 3}
+  m_PrefabInstance: {fileID: 2359285293411049980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446043234
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,14 +302,13 @@ GameObject:
   - component: {fileID: 1483967287}
   - component: {fileID: 1483967286}
   - component: {fileID: 1483967288}
-  - component: {fileID: 1483967289}
   m_Layer: 0
   m_Name: "\uB09A\uC2EF\uB300Tem1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1483967286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -393,24 +397,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1483967289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483967285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ba1f1d855337942bb8f63d636b27bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 294958148}
-  fishingTime: 2
-  itemA1Pish: {fileID: 11400000, guid: 36f2a842ede23b0439a810e2a975a520, type: 2}
-  itemB1Pish: {fileID: 11400000, guid: fbb83251d7cb2f04d941058f982cd32c, type: 2}
-  itemB2Pish: {fileID: 11400000, guid: fd2c7bb24c8273c429253b889e862e0b, type: 2}
-  itemSlots: []
 --- !u!1001 &1512265251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -627,6 +613,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3900399335696751102, guid: f330892d359bb794da9f8ab39b830699, type: 3}
   m_PrefabInstance: {fileID: 2359285293411049980}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946692518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820505937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ba1f1d855337942bb8f63d636b27bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 294958148}
+  Fising1: {fileID: 1483967285}
+  fishingTime: 2
+  itemA1Pish: {fileID: 11400000, guid: 36f2a842ede23b0439a810e2a975a520, type: 2}
+  itemB1Pish: {fileID: 11400000, guid: fbb83251d7cb2f04d941058f982cd32c, type: 2}
+  itemB2Pish: {fileID: 11400000, guid: fd2c7bb24c8273c429253b889e862e0b, type: 2}
+  itemSlots: []
 --- !u!1001 &2359285293411049980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -697,7 +702,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3900399335696751102, guid: f330892d359bb794da9f8ab39b830699, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1483967287}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4625583196740345084, guid: f330892d359bb794da9f8ab39b830699, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946692518}
   m_SourcePrefab: {fileID: 100100000, guid: f330892d359bb794da9f8ab39b830699, type: 3}
 --- !u!1001 &3830326775533217503
 PrefabInstance:
@@ -790,7 +798,11 @@ PrefabInstance:
     - target: {fileID: 7711513881568070356, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1483967289}
+      objectReference: {fileID: 1946692518}
+    - target: {fileID: 7711513881568070356, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartFishing
+      objectReference: {fileID: 0}
     - target: {fileID: 7811647952474442649, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_Name
       value: Canvas

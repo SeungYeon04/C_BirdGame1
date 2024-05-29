@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Item;
 using static UnityEditor.Progress;
@@ -8,9 +9,10 @@ public class FishingRod : MonoBehaviour
 {
     private Item _item;
     private int _quantity; // 아이템 수량 필드
-    public Inventory inventory; 
+    public Inventory inventory;
+    public GameObject Fising1; 
 
-    public float fishingTime = 3.0f; // 낚시에 걸리는 시간
+    public float fishingTime = 5.0f; // 낚시에 걸리는 시간
     //public List<Item> availableFish; // 사용 가능한 물고기 리스트
 
     public Item itemA1Pish; // A-1Pish 아이템
@@ -39,15 +41,14 @@ public class FishingRod : MonoBehaviour
     IEnumerator FishingCoroutine()
     {
         Debug.Log("낚시 시작, 애니메이션 재생");
-        
+        Fising1.SetActive(true);
 
         int randomNumber = Random.Range(0, 100); // 물고기 리스트에서 랜덤 인덱스
 
         Debug.Log("랜덤수:" + randomNumber);
 
-        //if(미끼에따른딜레이정하자)
+        //if(미끼에따른딜레이정하자+템사용)
         //{
-             
             // 일정 시간 대기
             yield return new WaitForSeconds(fishingTime);
         //}
@@ -72,5 +73,6 @@ public class FishingRod : MonoBehaviour
         {
             Debug.Log("슬롯없음"); 
         }
+        Fising1.SetActive(false);
     }
 }
