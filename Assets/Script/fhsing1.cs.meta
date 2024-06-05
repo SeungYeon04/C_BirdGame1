@@ -3,7 +3,12 @@ guid: 79ba1f1d855337942bb8f63d636b27bf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inventory: {fileID: 5153728368216212438, guid: d9527db1e01c7b348bc4f635937bdad8, type: 3}
+  - Fising1: {instanceID: 0}
+  - itemA1Pish: {fileID: 11400000, guid: 36f2a842ede23b0439a810e2a975a520, type: 2}
+  - itemB1Pish: {fileID: 11400000, guid: fbb83251d7cb2f04d941058f982cd32c, type: 2}
+  - itemB2Pish: {fileID: 11400000, guid: fd2c7bb24c8273c429253b889e862e0b, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

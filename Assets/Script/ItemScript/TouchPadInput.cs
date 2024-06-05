@@ -32,7 +32,7 @@ public class TouchPadInput : MonoBehaviour
             {
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 targetPosition.z = transform.position.z; // 플레이어의 Z축 위치 유지
-                CheckAndHandleItem(targetPosition);
+                CheckAndHandleItem(targetPosition); 
                 MoveAni.SetBool("MoveAni", true);
             }
 
@@ -68,15 +68,13 @@ public class TouchPadInput : MonoBehaviour
     }
 
     // 아이템을 터치한 위치에서 검출하여 처리
-    void CheckAndHandleItem(Vector3 touchPosition)
+    public void CheckAndHandleItem(Vector3 touchPosition)
     {
         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
         if (hit.collider != null && hit.collider.CompareTag("Item"))
         {
             // 아이템을 획득하거나 아이템을 터치한 위치로 이동하는 등의 작업을 수행
-            //Debug.Log("아이템을 획득했습니다!");
-
             // 아이템을 획득한 후에는 아이템을 삭제하거나 비활성화할 수 있습니다.
             Destroy(hit.collider.gameObject);
 
@@ -86,13 +84,18 @@ public class TouchPadInput : MonoBehaviour
             {
                 // 클릭한 객체에서 아이템 정보를 가져옴
                 Item item = clickInterface.ClickItem();
-                // 아이템 이름 출력
-                //print($"{item.itemName}");
                 // 인벤토리에 아이템 추가
-                inventory.AddItem(item);
-                Debug.Log(item);
-           
+                if (inventory != null)
+                {
+                    inventory.AddItem(item);
+                    Debug.Log("아이템 추가됨: " + item.itemName);
+                }
+                else
+                {
+                    Debug.LogError("Inventory가 초기화되지 않았습니다.");
+                }
             }
         }
     }
 }
+

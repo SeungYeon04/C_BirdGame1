@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using static Item;
 
 [System.Serializable]
 public class ItemSlot
 {
-    public Item item;
+    public string itemName; // 아이템 이름을 저장
     public int quantity;
+    public Item item;
 
-
-    public ItemSlot(Item newItem, int newQuantity)
+    public ItemSlot(string newItemName, int newQuantity)
     {
-        item = newItem;
+        itemName = newItemName;
         quantity = newQuantity;
+        item = null; // 초기에는 null로 설정
     }
 
     // 수량을 추가하는 메소드. 최대치를 넘지 않도록 확인.
@@ -46,19 +48,24 @@ public class Inventory : MonoBehaviour
         // 슬롯 배열을 부모 객체 아래의 모든 Slot 컴포넌트로 초기화
         slots = slotParent.GetComponentsInChildren<Slot>();
     }
-     #endif
-
+#endif
     void Awake()
     {
         // 인벤토리 초기화 함수 호출
-        FreshSlot(); 
+        FreshSlot();
+        GameManager.Instance.LoadInventory(); // 게임 매니저를 통해 인벤토리 로드
+    }
+
+    public int GetItemsCount()
+    {
+        return items.Count;
     }
 
     // 아이템을 추가하는 함수
     public void AddItem(Item itemToAdd)
     {
         // 해당 아이템을 가진 슬롯을 찾음
-        ItemSlot slot = itemSlots.Find(s => s.item == itemToAdd);
+        ItemSlot slot = itemSlots.Find(s => s.itemName == itemToAdd.itemName);
 
         if (slot != null)
         {
@@ -70,7 +77,7 @@ public class Inventory : MonoBehaviour
             // 새 슬롯을 추가
             if (itemSlots.Count < slots.Length)
             {
-                itemSlots.Add(new ItemSlot(itemToAdd, 1));
+                itemSlots.Add(new ItemSlot(itemToAdd.itemName, 1));
             }
             else
             {
@@ -80,7 +87,9 @@ public class Inventory : MonoBehaviour
         }
 
         FreshSlot();
+        GameManager.Instance.SaveInventory(); // 게임 매니저를 통해 인벤토리 저장
     }
+
     public void FreshSlot()
     {
         // 모든 슬롯을 순회하면서, 각 슬롯에 대응하는 아이템 슬롯 정보를 업데이트합니다.
@@ -90,6 +99,7 @@ public class Inventory : MonoBehaviour
             if (i < itemSlots.Count)
             {
                 var slot = itemSlots[i];
+                slot.item = FindItemByName(slot.itemName); // itemName을 기반으로 item 객체 설정
                 slots[i].UpdateSlot(slot.item, slot.quantity);
             }
             else
@@ -99,6 +109,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public Item FindItemByName(string itemName)
+    {
+        return items.Find(item => item.itemName == itemName);
+    }
 
     //Inventory 스크립트 내에 모드를 나타내는 열거형과 변수를 추가합니다.
     //이 변수는 인벤토리가 현재 아이템 사용 모드인지, 판매 모드인지를 나타냅니다 
@@ -151,10 +165,12 @@ public class Inventory : MonoBehaviour
                 {
                     itemSlots.RemoveAt(i);
                 }
-                FreshSlot(); 
+                FreshSlot();
+                GameManager.Instance.SaveInventory();
                 break;
             }
         }
+
     }
 
     public void UseItem(Item item, int quantity)
@@ -170,9 +186,15 @@ public class Inventory : MonoBehaviour
         currentMode = InventoryMode.SellItem;
         sellableItemType = itemType; // 판매 가능한 아이템 타입 설정
     }
-
-
 }
 
+[System.Serializable]
+public class InventoryData
+{
+    public List<ItemSlot> itemSlots;
 
-
+    public InventoryData(List<ItemSlot> itemSlots)
+    {
+        this.itemSlots = itemSlots;
+    }
+}

@@ -39,7 +39,6 @@ public class Slot : MonoBehaviour
             UpdateSlotUI(); // UI 업데이트 메소드 호출
         }
     }
-
     // 슬롯의 UI를 업데이트하는 메소드
     public void UpdateSlotUI()
     {
