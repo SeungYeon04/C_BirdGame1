@@ -458,6 +458,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 518735602649602920, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: fishing1
+      objectReference: {fileID: 0}
+    - target: {fileID: 812400952505141714, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_Text
+      value: "\uAC15\uAC00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615006981679094162, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -337.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615006981679094162, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 352
+      objectReference: {fileID: 0}
     - target: {fileID: 3465407248290161803, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

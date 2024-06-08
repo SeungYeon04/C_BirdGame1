@@ -10,7 +10,9 @@ public class FishingRod : MonoBehaviour
     private Item _item;
     private int _quantity; // 아이템 수량 필드
     public Inventory inventory;
-    public GameObject Fising1; 
+    public GameObject Fising1;
+
+    public Animator FsAn1;
 
     public float fishingTime = 5.0f; // 낚시에 걸리는 시간
     //public List<Item> availableFish; // 사용 가능한 물고기 리스트
@@ -41,18 +43,21 @@ public class FishingRod : MonoBehaviour
     IEnumerator FishingCoroutine()
     {
         Debug.Log("낚시 시작, 애니메이션 재생");
+        FsAn1.SetTrigger("FsingTem2");
+
         Fising1.SetActive(true);
+        yield return new WaitForSeconds(1);
+
+        FsAn1.SetTrigger("FsingTem1");
+        yield return new WaitForSeconds(fishingTime);
 
         int randomNumber = Random.Range(0, 100); // 물고기 리스트에서 랜덤 인덱스
+        FsAn1.SetTrigger("FsingTem2");
+        yield return new WaitForSeconds(1); //딜레이
+        
 
         Debug.Log("랜덤수:" + randomNumber);
 
-        //if(미끼에따른딜레이정하자+템사용)
-        //{
-            // 일정 시간 대기
-            yield return new WaitForSeconds(fishingTime);
-        //}
-        
 
         if (randomNumber <= 30)  
         {

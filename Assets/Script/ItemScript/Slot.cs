@@ -51,7 +51,7 @@ public class Slot : MonoBehaviour
             if (_quantity > 1)
             {
                 quantityText.text = _quantity.ToString();
-                quantityText.gameObject.SetActive(true);
+                quantityText.gameObject.SetActive(true); 
             }
             else
             {

@@ -9,12 +9,21 @@ EditorBuildSettings:
     path: "Assets/Scenes/\uC784\uC2DC\uC774\uB3D9(\uC52C)/Rogin.unity"
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/RPGMain.unity
+    path: Assets/Scenes/Square.unity
     guid: ac42ec0bee5b0ea4bb18fbeacfc7bfb2
   - enabled: 1
     path: "Assets/Scenes/\uC784\uC2DC\uC774\uB3D9(\uC52C)/ATM.unity"
     guid: 850dbaafd54d5dc4aa82b444242f16f2
   - enabled: 1
-    path: Assets/Scenes/Home.unity
+    path: Assets/Scenes/Corridor.unity
     guid: c21c1d2b479cc4a4cb9a85f40846cb3d
+  - enabled: 1
+    path: Assets/Scenes/Fishshop.unity
+    guid: 580f842be3dbca5438ccebf381c42c4b
+  - enabled: 1
+    path: Assets/Scenes/River-fs1.unity
+    guid: f6604eaf65ca6f444b83f1833643ac30
+  - enabled: 1
+    path: Assets/Scenes/Markets.unity
+    guid: 152e25fdf539efe418fe04196fce29a7
   m_configObjects: {}

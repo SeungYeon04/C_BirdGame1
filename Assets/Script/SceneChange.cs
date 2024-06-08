@@ -5,13 +5,28 @@ using UnityEngine;
 
 public class SceneChange : MonoBehaviour
 {
-    public void cha1()
+    public void square()
     {
-        SceneManager.LoadScene("RPGMain");  
+        SceneManager.LoadScene("Square");  
     }
 
-    public void home1()
+    public void corr()
     {
-        SceneManager.LoadScene("Home");
+        SceneManager.LoadScene("corridor");
+    }
+
+    public void fsihshop()
+    {
+        SceneManager.LoadScene("Fishshop");
+    }
+
+    public void fishing1()
+    {
+        SceneManager.LoadScene("River-fs1");
+    }
+
+    public void market()
+    {
+        SceneManager.LoadScene("Markets");
     }
 }
