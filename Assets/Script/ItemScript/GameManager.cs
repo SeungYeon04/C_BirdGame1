@@ -80,6 +80,4 @@ public class GameManager : MonoBehaviour
             Debug.Log("No inventory file found at " + inventoryFilePath);
         }
     }
-
-
 }

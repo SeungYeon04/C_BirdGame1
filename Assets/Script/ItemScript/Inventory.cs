@@ -7,7 +7,7 @@ using static Item;
 [System.Serializable]
 public class ItemSlot
 {
-    public string itemName; // 아이템 이름을 저장
+    public string itemName;
     public int quantity;
     public Item item;
 
@@ -15,7 +15,6 @@ public class ItemSlot
     {
         itemName = newItemName;
         quantity = newQuantity;
-        item = null; // 초기에는 null로 설정
     }
 
     // 수량을 추가하는 메소드. 최대치를 넘지 않도록 확인.
@@ -41,6 +40,9 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Slot[] slots;
 
+    public GameObject itemPopupPrefab; // ItemPopup 프리팹 참조
+    private Inventory inventory;
+
 #if UNITY_EDITOR
     // 에디터 상에서만 호출되는 함수
     private void OnValidate()
@@ -65,7 +67,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item itemToAdd)
     {
         // 해당 아이템을 가진 슬롯을 찾음
-        ItemSlot slot = itemSlots.Find(s => s.itemName == itemToAdd.itemName);
+        ItemSlot slot = itemSlots.Find(s => s.item == itemToAdd);
 
         if (slot != null)
         {
@@ -88,6 +90,9 @@ public class Inventory : MonoBehaviour
 
         FreshSlot();
         GameManager.Instance.SaveInventory(); // 게임 매니저를 통해 인벤토리 저장
+
+        // 아이템 팝업 표시
+        ShowItemPopup(itemToAdd, 1);
     }
 
     public void FreshSlot()
@@ -99,7 +104,6 @@ public class Inventory : MonoBehaviour
             if (i < itemSlots.Count)
             {
                 var slot = itemSlots[i];
-                slot.item = FindItemByName(slot.itemName); // itemName을 기반으로 item 객체 설정
                 slots[i].UpdateSlot(slot.item, slot.quantity);
             }
             else
@@ -108,15 +112,47 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-    public Item FindItemByName(string itemName)
+    // 아이템 팝업 표시 함수
+    private void ShowItemPopup(Item item, int quantity)
     {
-        return items.Find(item => item.itemName == itemName);
+        // 플레이어 객체를 찾습니다.
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player 객체를 찾을 수 없습니다.");
+            return;
+        }
+
+        // 캔버스를 찾습니다.
+        Canvas mainCanvas = FindObjectOfType<Canvas>();
+        if (mainCanvas == null)
+        {
+            Debug.LogError("Canvas가 씬에 존재하지 않습니다.");
+            return;
+        }
+
+        // 팝업의 위치를 플레이어의 옆으로 설정합니다.
+        Vector3 worldPosition = player.transform.position + new Vector3(1.0f, 1.0f, 0); // 플레이어 객체의 옆에 생성
+
+        // 월드 좌표를 캔버스 좌표로 변환합니다.
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(mainCanvas.transform as RectTransform, screenPosition, mainCanvas.worldCamera, out canvasPosition);
+
+        // 팝업을 생성하고 위치를 설정합니다.
+        GameObject popup = Instantiate(itemPopupPrefab, mainCanvas.transform);
+        popup.GetComponent<RectTransform>().anchoredPosition = canvasPosition;
+
+        ItemPopup popupScript = popup.GetComponent<ItemPopup>();
+        if (popupScript != null)
+        {
+            popupScript.Setup(item, quantity); // ItemPopup 설정
+        }
     }
+
 
     //Inventory 스크립트 내에 모드를 나타내는 열거형과 변수를 추가합니다.
     //이 변수는 인벤토리가 현재 아이템 사용 모드인지, 판매 모드인지를 나타냅니다 
-
     public enum InventoryMode
     {
         UseItem,
