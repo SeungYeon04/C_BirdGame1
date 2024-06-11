@@ -469,7 +469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB09A\uC2DC"
+  m_Text: "\uB09A\uC2DC(\uD558\uCC9C,\uD558\uC218\uB3C4\uB4F1\uC73C\uB85C\uBC14\uAFC0\uC608\uC815)"
 --- !u!222 &1424553482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -842,8 +842,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 56df4d3828a3e3e429d5aaa0ddac235e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1305,6 +1305,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: market
       objectReference: {fileID: 0}
+    - target: {fileID: 2768019767582755974, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768019767582755974, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56df4d3828a3e3e429d5aaa0ddac235e, type: 3}
     - target: {fileID: 3465407248290161803, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

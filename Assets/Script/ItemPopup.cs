@@ -10,7 +10,7 @@ public class ItemPopup : MonoBehaviour
     public void Setup(Item item, int quantity)
     {
         itemImage.sprite = item.itemImage; // 아이템 이미지 설정
-        itemQuantityText.text = $"x{quantity}"; // 아이템 수량 설정
+        itemQuantityText.text = $"{quantity}"; // 아이템 수량 설정(띄우기) 
         StartCoroutine(FadeOutAndDestroy());
     }
 

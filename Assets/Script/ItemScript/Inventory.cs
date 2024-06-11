@@ -144,6 +144,7 @@ public class Inventory : MonoBehaviour
         popup.GetComponent<RectTransform>().anchoredPosition = canvasPosition;
 
         ItemPopup popupScript = popup.GetComponent<ItemPopup>();
+
         if (popupScript != null)
         {
             popupScript.Setup(item, quantity); // ItemPopup ¼³Á¤
