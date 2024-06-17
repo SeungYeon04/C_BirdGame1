@@ -514,6 +514,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593151091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5661909414412620500, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+  m_PrefabInstance: {fileID: 1504067343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe6af317ba088348aec687635079050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &933917772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1259,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123996457169049419, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 258488950743078899, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
     - target: {fileID: 518735602649602920, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: corr
@@ -1256,6 +1275,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\uC9D1"
       objectReference: {fileID: 0}
+    - target: {fileID: 1402793144243931777, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 2556009595865726601, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
     - target: {fileID: 2615006981679094162, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -289.55
@@ -1272,6 +1299,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 56df4d3828a3e3e429d5aaa0ddac235e, type: 3}
+    - target: {fileID: 3415137001194627860, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
     - target: {fileID: 3465407248290161803, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1352,6 +1383,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3535366231880836153, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 4240061192565446470, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 4729008212679697311, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 5133253921111647533, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 5135945307791518663, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 6525550855800517948, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
     - target: {fileID: 6664187140745652066, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1364,6 +1419,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7995389192753369867, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 8410354585493033787, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
+    - target: {fileID: 8628352035166916115, guid: acad373f66983c74fb3b1b06df3df91d, type: 3}
+      propertyPath: playerStack
+      value: 
+      objectReference: {fileID: 593151091}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

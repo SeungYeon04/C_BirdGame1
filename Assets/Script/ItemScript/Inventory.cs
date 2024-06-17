@@ -41,7 +41,6 @@ public class Inventory : MonoBehaviour
     private Slot[] slots;
 
     public GameObject itemPopupPrefab; // ItemPopup 프리팹 참조
-    private Inventory inventory;
 
 #if UNITY_EDITOR
     // 에디터 상에서만 호출되는 함수
@@ -66,6 +65,14 @@ public class Inventory : MonoBehaviour
     // 아이템을 추가하는 함수
     public void AddItem(Item itemToAdd)
     {
+        if (itemToAdd == null)
+        {
+            Debug.LogError("추가하려는 아이템이 null입니다.");
+            return;
+        }
+
+        //Debug.Log("AddItem called with: " + itemToAdd.itemName);
+
         // 해당 아이템을 가진 슬롯을 찾음
         ItemSlot slot = itemSlots.Find(s => s.item == itemToAdd);
 
@@ -73,13 +80,15 @@ public class Inventory : MonoBehaviour
         {
             // 슬롯이 이미 있으면, 수량을 증가
             slot.AddQuantity(1);
+            //Debug.Log("Quantity added for item: " + itemToAdd.itemName);
         }
         else
         {
             // 새 슬롯을 추가
             if (itemSlots.Count < slots.Length)
             {
-                itemSlots.Add(new ItemSlot(itemToAdd.itemName, 1));
+                itemSlots.Add(new ItemSlot(itemToAdd.itemName, 1) { item = itemToAdd });
+                //Debug.Log("New slot added for item: " + itemToAdd.itemName);
             }
             else
             {
@@ -89,10 +98,14 @@ public class Inventory : MonoBehaviour
         }
 
         FreshSlot();
+        //Debug.Log("Slots refreshed");
+
         GameManager.Instance.SaveInventory(); // 게임 매니저를 통해 인벤토리 저장
+        //Debug.Log("Inventory saved");
 
         // 아이템 팝업 표시
         ShowItemPopup(itemToAdd, 1);
+        Debug.Log("Item popup shown for: " + itemToAdd.itemName);
     }
 
     public void FreshSlot()
@@ -113,7 +126,7 @@ public class Inventory : MonoBehaviour
         }
     }
     // 아이템 팝업 표시 함수
-    private void ShowItemPopup(Item item, int quantity)
+    public void ShowItemPopup(Item item, int quantity)
     {
         // 플레이어 객체를 찾습니다.
         GameObject player = GameObject.FindGameObjectWithTag("Player");

@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             InventoryData data = new InventoryData(inventory.itemSlots);
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(inventoryFilePath, json);
-            Debug.Log("Inventory saved to¤Ì¤Ì " + inventoryFilePath);
+            Debug.Log("Save = " + inventoryFilePath);
         }
         else
         {

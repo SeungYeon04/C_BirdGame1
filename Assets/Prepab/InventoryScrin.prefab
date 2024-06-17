@@ -1017,6 +1017,7 @@ MonoBehaviour:
   - {fileID: 2276578603917553900}
   - {fileID: 7064241360927558765}
   - {fileID: 732591536901276862}
+  itemPopupPrefab: {fileID: 1532135672576635663, guid: 66ee0b0c9cda15a44ba7a5c92a1381b5, type: 3}
   currentMode: 0
   sellableItemType: 5
 --- !u!1 &1597936667563989241

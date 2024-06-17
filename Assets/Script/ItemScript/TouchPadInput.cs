@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class TouchPadInput : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class TouchPadInput : MonoBehaviour
 
             // 이동 시작
             isMoving = true;
+
+   
         }
 
         // 플레이어를 목표 위치로 이동
@@ -80,17 +83,24 @@ public class TouchPadInput : MonoBehaviour
 
             IObjectItem clickInterface = hit.transform.gameObject.GetComponent<IObjectItem>();
 
+         
+
+
             if (clickInterface != null)
             {
                 // 클릭한 객체에서 아이템 정보를 가져옴
                 Item item = clickInterface.ClickItem();
+
+                //Debug.Log("Inventory instance: " + (inventory != null ? "Exists" : "Null"));
+                //Debug.Log("Item from clickInterface: " + (item != null ? item.itemName : "Null"));
+
                 // 인벤토리에 아이템 추가
-                if (inventory != null)
+                if (inventory != null) 
                 {
                     inventory.AddItem(item);
-                    Debug.Log("아이템 추가됨: " + item.itemName);
+                    Debug.Log("(input)아이템 추가됨: " + item);
                 }
-                else
+                else //이건 왜 출력 안 함? 
                 {
                     Debug.LogError("Inventory가 초기화되지 않았습니다.");
                 }
