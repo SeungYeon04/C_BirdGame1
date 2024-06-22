@@ -71,12 +71,12 @@ public class Slot : MonoBehaviour
         // Inventory와 PlayerStack 참조가 없는 경우 에러 로깅
         if (inventory == null)
         {
-            Debug.LogError("Inventory 참조가 없습니다.");
+            //Debug.LogError("Inventory 참조가 없습니다.");
             return;
         }
         if (itemSlot == null)
         {
-            Debug.LogError("ItemSlot 참조가 없습니다.");
+            Debug.LogError("ItemSlot 참조가 없습니다."); 
             return;
         }
 

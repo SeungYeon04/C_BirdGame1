@@ -50,34 +50,20 @@ public class GameManager : MonoBehaviour
         SaveInventory();
     }
 
-    public void SaveInventory()
+    public void SaveInventory() //인벤토리는 비활성화라 null임. 그래서 inventory !=였나 없앰 
     {
-        if (inventory != null)
-        {
-            InventoryData data = new InventoryData(inventory.itemSlots);
-            string json = JsonUtility.ToJson(data, true);
-            File.WriteAllText(inventoryFilePath, json);
-            Debug.Log("Save = " + inventoryFilePath);
-        }
-        else
-        {
-            Debug.LogError("Inventory reference is null. Cannot save inventory.");
-        }
+        InventoryData data = new InventoryData(inventory.itemSlots);
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(inventoryFilePath, json);
+        Debug.Log("Save = " + inventoryFilePath);
     }
 
     public void LoadInventory()
     {
-        if (File.Exists(inventoryFilePath))
-        {
-            string json = File.ReadAllText(inventoryFilePath);
-            InventoryData data = JsonUtility.FromJson<InventoryData>(json);
-            inventory.itemSlots = data.itemSlots; 
-            inventory.FreshSlot();
-            Debug.Log("Inventory loaded from " + inventoryFilePath);
-        }
-        else
-        {
-            Debug.Log("No inventory file found at " + inventoryFilePath);
-        }
+        string json = File.ReadAllText(inventoryFilePath);
+        InventoryData data = JsonUtility.FromJson<InventoryData>(json);
+        inventory.itemSlots = data.itemSlots;
+        inventory.FreshSlot();
+        Debug.Log("Inventory loaded from " + inventoryFilePath);
     }
 }

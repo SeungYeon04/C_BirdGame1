@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
     {
         // 인벤토리 초기화 함수 호출
         FreshSlot();
-        GameManager.Instance.LoadInventory(); // 게임 매니저를 통해 인벤토리 로드
+        GameManager.Instance?.LoadInventory(); // 게임 매니저를 통해 인벤토리 로드
     }
 
     public int GetItemsCount()
